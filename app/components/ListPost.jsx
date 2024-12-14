@@ -16,7 +16,7 @@ export function ListPosts() {
 
   const formatUrl = (str) => {
     const replace = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    return replace.split(' ').join('_');
+    return replace.split(' ').join('_').replace(':', "");
   }
 
   return (
@@ -32,8 +32,11 @@ export function ListPosts() {
                 <Link
                   className='' 
                   href={{
-                    pathname: `/${formatUrl(post.title)}`,
-                    query: {post: post.id}
+                    pathname: `/post/`,
+                    query: {
+                      nombre: formatUrl(post.title),
+                      post: post.id
+                    }
                   }}
                   query={post.id}
                   key={post.id}>

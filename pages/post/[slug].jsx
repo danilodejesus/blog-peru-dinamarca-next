@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Layout from "../app/containers/Layout";
+import Layout from "../../app/containers/Layout";
+export const dynamic = 'force-dynamic'
 
 const FullPost = () => {
   const router = useRouter()

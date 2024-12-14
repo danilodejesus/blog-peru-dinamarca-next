@@ -1,5 +1,7 @@
 const nextConfig = {
-  output: "export"
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
 }
 
 export default nextConfig
