@@ -1,23 +1,25 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 function Layout(props) {
   return (
-    <div className="layout">
+    <div className="layout gris-nordico">
       <Head>
-        <title>Blog Django Next</title>
+        <title>Blog Sobre Cultura Inca Peruana</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className='header'>
         <div className='container flex'>
-          <a href="#">Logo</a>
+          <Link href="/" className='logo terracota-natural'>NordAndes</Link>
           <nav className='nav'>
             <ul>
               <li>
-                <a>Perú</a>
-                <a>Dinamarca</a>
-                <a>Viajes</a>
-                <a>About us</a>
+                <Link href="/" className='terracota-natural'>Perú</Link>
+                <Link href="/" className='terracota-natural'>Viajes</Link>
+                <Link href="/" className='terracota-natural'>About us</Link>
+                <Link href="/" className='terracota-natural'>About us</Link>
+                <Link href="/" className='terracota-natural'>About us</Link>
               </li>
             </ul>
           </nav>
@@ -26,12 +28,30 @@ function Layout(props) {
 
       {props.children}
 
-      <footer>
+      <footer className=''>
         <p>All rights reserved.</p>
       </footer>
 
-      <style>
+      <style global jsx>
         {`
+          .terracota-natural {
+            color: #A0522D;
+          }
+          .oro-andino {
+            color: #FFC300;
+          }
+          .rojo-inca {
+            color: #D72638;
+          }
+          .azul-fjord {
+            color: #264653;
+          }
+          .gris-nordico {
+            background: #ececec; 
+          }
+          .blanco-hueso {
+            color: #F5F5DC;
+          }
           a {
             text-decoration: none;
           }
@@ -57,16 +77,25 @@ function Layout(props) {
             align-items: center;
           }
           .layout {
-            border: 2px solid red;
           }
           .header {
             padding: 20px 0;
+            background: white;
+          }
+          .logo {
+            font-weight: bold;
+            font-size: 20px;
           }
           .nav a {
             padding-left: 20px;
           }
           footer {
             text-align: center;
+            background: white;
+            padding: 20px;
+          }
+          footer p {
+            margin: 0;
           }
         `}
       </style>

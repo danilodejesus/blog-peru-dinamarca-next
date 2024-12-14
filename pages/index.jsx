@@ -4,12 +4,10 @@ import Layout from '../app/containers/Layout.jsx';
 
 function Home() {
   return (
-    <div className="home">
-      <Layout>
-        <HomeBanner />
-        <ListPosts />
-      </Layout>
-    </div>
+    <Layout>
+      <HomeBanner />
+      <ListPosts />
+    </Layout>
   );
 }
 

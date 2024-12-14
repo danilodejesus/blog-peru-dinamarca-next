@@ -6,7 +6,7 @@ export function ListPosts() {
 
   useEffect(() => {
     async function loadPosts() {
-      const res = await fetch('http://127.0.0.1:8000/api/posts/')
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/posts/`)
       const posts = await res.json()
       console.log(posts)
       setPosts(posts)
@@ -15,25 +15,33 @@ export function ListPosts() {
   }, [])
 
   const formatUrl = (str) => {
-    return str.split(' ').join('_');
+    const replace = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    return replace.split(' ').join('_');
   }
 
   return (
-    <main className='main'>
+    <main className='main gris-nordico'>
       <div className="container">
-        <h3>Articles, info and tips about Danish culture
+        <h3 className='azul-fjord'>Articles, info and tips about Danish culture
         </h3>
 
         <div className='main-post'>
-          <ul className='flex'>
+          <ul className='main-posts flex'>
             {posts.map((post) => (
-              <Link href={`/${formatUrl(post.title)}${post.id}`} key={post.id}>
-                <li key={post.id}>
-                  <h2>{post.title}</h2>
-                  <p className='description'>{post.h2_description}</p>
+              <li key={post.id}>
+                <Link
+                  className='' 
+                  href={{
+                    pathname: `/${formatUrl(post.title)}`,
+                    query: {post: post.id}
+                  }}
+                  query={post.id}
+                  key={post.id}>
+                  <h2 className='terracota-natural'>{post.title}</h2>
+                  <p className='description azul-fjord'>{post.first_text}</p>
                   <p>{post.country}</p>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -43,10 +51,9 @@ export function ListPosts() {
         {`
           .main {
             padding: 20px 0;
-            background: white;
           }
           .main h3 {
-            color: #660029;
+            // color: #660029;
           }
           .main-post ul {
             align-items: inherit;
@@ -61,13 +68,17 @@ export function ListPosts() {
 
           .main-post h2 {
             font-size: 20px;
-            max-height: 36px;
-            height: 100%;
+            height: 70px;
+            overflow: hidden;
           }
 
           .main-post .description {
             height: 56px;
             overflow: hidden;
+          }
+
+          .main-posts {
+            flex-wrap: wrap;
           }
         `}
       </style>

@@ -1,8 +1,8 @@
 function HomeBanner() {
   return (
-    <div className="home-banner">
+    <div className="home-banner bl">
       <div className="container">
-        <h1>
+        <h1 className="azul-fjord">
           Bienvenidos a un Encuentro entre Culturas y Energías 🇵🇪🇩🇰
         </h1>
 
@@ -18,12 +18,10 @@ function HomeBanner() {
       <style>
         {`
           .home-banner {
-            background: #f4f4f4;
             padding: 20px 0;
           }
           .home-banner h1 {
             font-size: 30px;
-            color: #660029;
           }
           .home-banner p {
             max-width: 700px;
